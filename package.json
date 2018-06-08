@@ -1,7 +1,7 @@
 {
-  "name": "test-jest",
+  "name": "learning-jest",
   "version": "1.0.0",
-  "description": "A demo on how to test promises throwing",
+  "description": "A demo on how to test promises and promises throwing",
   "main": "getKmlFileName.js",
   "scripts": {
     "test": "npx jest"
