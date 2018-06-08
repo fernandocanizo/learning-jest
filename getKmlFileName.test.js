@@ -15,14 +15,14 @@ const createGoodFolder = () => {
 const createEmptyFolder = () => fs.mkdtempSync('/tmp/test-getKmlFilename-');
 
 describe('/app/lib/getKmlFilename', () => {
-  // Failure tests
-  test('Should throw if no KML files in folder', () => {
-    expect(async () => await getKmlFilename(createEmptyFolder())).toThrow();
-  });
-
   // Success tests
   test('Should return a KML filename', async () => {
     const result = await getKmlFilename(createGoodFolder());
     expect(result).toMatch(/\.kml$/);
+  });
+
+  // Failure tests
+  test('Should throw if no KML files in folder', () => {
+    expect(async () => await getKmlFilename(createEmptyFolder())).toThrow();
   });
 });
