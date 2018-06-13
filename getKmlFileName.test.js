@@ -23,37 +23,14 @@ describe('/app/lib/getKmlFilename', () => {
 
   // Failure tests
   test('Should throw if no KML files in folder', () => {
-    // Expected one assertion to be called but received zero assertion calls.
-    // expect.assertions(1);
-
-    // expect(function).toThrow(undefined)
-    // Received value must be a function, but instead "object" was found
-    //return getKmlFilename(createEmptyFolder()).catch(e => expect(e).toThrow());
-
-    // expect(string)[.not].toMatch(expected)
-    // string value must be a string.
-    // Received:
-    // object: [Error: No valid KML file in /tmp/test-getKmlFilename-j2XxQ4]
-
-    return getKmlFilename(createEmptyFolder()).catch(e => expect(e).toMatch('No valid KML file in'));
+    expect.assertions(1);
+    return expect(getKmlFilename(createEmptyFolder())).rejects.toThrow(/No valid KML file in/);
   });
 
-  test('Should throw if no KML files in folder - try/catch version', async () => {
-    // Expected one assertion to be called but received zero assertion calls.
-    // expect.assertions(1);
-
-    try {
-      const result = await getKmlFilename(createEmptyFolder());
-    } catch (e) {
-      // Received value must be a function, but instead "object" was found
-      //expect(e).toThrow();
-
-      // expect(string)[.not].toMatch(expected)
-      // string value must be a string.
-      // Received:
-      // object: [Error: No valid KML file in /tmp/test-getKmlFilename-3JOUAX]
-      expect(e).toMatch('No valid KML file in');
-    }
+  // same test as before
+  test('Should throw if no KML files in folder - async/await version', async () => {
+    expect.assertions(1);
+    await expect(getKmlFilename(createEmptyFolder())).rejects.toThrow(/No valid KML file in/);
   });
 
 });
